@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int sualIndeksi=0;
+        int duzgunSayi=0;
+        int sehvlerinSayi=0;
+        String[][] suallar={
+                {"Azerbaycanin paytaxti hansi seherdir?","B","A)Naxcivan","B)Baki","C)Gence"},
+                {"Dunyada en uzun cay hansidir?","A","A)Nil","B)Araz","C)Kur"},
+                {"Yerin uzunde en derin gol hansidir?","C","A)Xezer","B)Goygol","C)Baykal"},
+                {"Azerbaycan hansi olke ile serhed qonsusudur?","B","A)Amerika","B)Gurcustan","C)Indoneziya"},
+                {"Olkemiz hansi materikda yerlesir?","A","A)AVrasiya","B)afrika","C)Avstraliya"}
+        };
+        while(sualIndeksi<suallar.length){
+            String sualMetni=suallar[sualIndeksi][0];
+            String sualinCavabi=suallar[sualIndeksi][1];
+
+            boolean cavabDuzdu=false;
+
+            do{
+                System.out.println("\nSual metni: "+sualMetni);
+
+                for (int i = 2; i < suallar[sualIndeksi].length; i++) {
+                    System.out.println(suallar[sualIndeksi][i]);
+
+                }
+                System.out.println("Cavabinizi daxil edin: A,B,C");
+                String cavab=sc.next().trim().toUpperCase();
+
+                if(cavab.equals("A") || cavab.equals("B") || cavab.equals("C")){
+                    if(cavab.equals(sualinCavabi)){
+                        System.out.println("Duzgun cavab tapildi!");
+                        cavabDuzdu=true;
+                        duzgunSayi++;
+                    }else{
+                        System.out.println("Cavab duzgun deyil");
+                        sehvlerinSayi++;
+                    }
+                }else{
+                    System.out.println("Daxil olunan cavab A,B,C  cavablarinin biri olmalidir");
+                }
+            }while(!cavabDuzdu);
+            sualIndeksi++;
+
+        }
+        System.out.println("Test bitdi!!");
+        System.out.println("Duzgun cavablarin sayi: "+ duzgunSayi);
+        System.out.println("Sehv cavablarin sayi: "+sehvlerinSayi);
+    }
+}
